@@ -40,6 +40,8 @@ namespace memoriajatek
         {
             if (lbx_meretek.SelectedItem != null && lbx_temak.SelectedItem != null)
             {
+                grd_jatek.RowDefinitions.Clear();
+                grd_jatek.ColumnDefinitions.Clear();
                 int meret = Convert.ToInt32(lbx_meretek.SelectedItem.ToString().First().ToString());
                 string tema = lbx_temak.SelectedItem.ToString();
 
