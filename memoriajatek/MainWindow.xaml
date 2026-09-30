@@ -1,0 +1,25 @@
+﻿<Window x:Class="memoriajatek.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:memoriajatek"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ListBox x:Name="lbx_meretek" Width="150" Grid.Row="0" HorizontalAlignment="Left"></ListBox>
+            <ListBox x:Name="lbx_temak" Width="150" Grid.Row="0" HorizontalAlignment="Right"></ListBox>
+            <Button x:Name="btn_start" Grid.Row="1" Content="Start Game" FontSize="44" Click="btn_start_Click"></Button>
+        </Grid>
+        <Grid x:Name="grd_jatek" Grid.Column="1"></Grid>
+    </Grid>
+</Window>
