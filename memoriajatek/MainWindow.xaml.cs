@@ -263,7 +263,7 @@ namespace memoriajatek
                             kitalaltak.Add(elozogomb);
                             if (kitalaltak.Count == grd_jatek.RowDefinitions.Count * grd_jatek.RowDefinitions.Count)
                             {
-                                MessageBox.Show($"NYERTÉL! Párosítások száma: {moves}", "GYŐZTES", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                                MessageBox.Show($"NYERTÉL! Próbálkozás száma: {moves}", "GYŐZTES", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                             }
                             helyes = false;
                         }
