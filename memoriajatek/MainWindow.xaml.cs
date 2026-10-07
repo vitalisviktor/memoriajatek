@@ -165,10 +165,10 @@ namespace memoriajatek
                 }
                 int g = 0;
                 ertekek = new string[meret, meret];
-                int fontmeret = meret;
-                if (tema == "Ország-főváros")
+                int fontmeret = (24 / meret) * 2;
+                if (tema != "Ország-Főváros")
                 {
-                    fontmeret *= 10;
+                    fontmeret *= 3;
                 }
                 for (int i = 0; i < meret; i++)
                 {
@@ -180,7 +180,7 @@ namespace memoriajatek
                         Button btn = new Button()
                         {
                             Content = "?",
-                            FontSize = Math.Round(120.0 / fontmeret),
+                            FontSize = fontmeret,
                             Background = System.Windows.Media.Brushes.LightGray
 
                         };
