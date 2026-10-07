@@ -49,6 +49,44 @@ namespace memoriajatek
     { "Észtország", "Tallinn" },
     { "Lettország", "Riga" }
 };
+        Dictionary<string, string> forditottorszagok = new Dictionary<string, string>
+{
+    { "Budapest", "Magyarország" },
+    { "Bécs", "Ausztria" },
+    { "Berlin", "Németország" },
+    { "Párizs", "Franciaország" },
+    { "Róma", "Olaszország" },
+    { "Madrid", "Spanyolország" },
+    { "Lisszabon", "Portugália" },
+    { "Brüsszel", "Belgium" },
+    { "Amszterdam", "Hollandia" },
+    { "Bern", "Svájc" },
+    { "Prága", "Csehország" },
+    { "Pozsony", "Szlovákia" },
+    { "Varsó", "Lengyelország" },
+    { "Bukarest", "Románia" },
+    { "Szófia", "Bulgária" },
+    { "Athén", "Görögország" },
+    { "Zágráb", "Horvátország" },
+    { "Belgrád", "Szerbia" },
+    { "Ljubljana", "Szlovénia" },
+    { "Szarajevó", "Bosznia-Hercegovina" },
+    { "Podgorica", "Montenegró" },
+    { "Tirana", "Albánia" },
+    { "Szkopje", "Észak-Macedónia" },
+    { "Oslo", "Norvégia" },
+    { "Stockholm", "Svédország" },
+    { "Helsinki", "Finnország" },
+    { "Koppenhága", "Dánia" },
+    { "Dublin", "Írország" },
+    { "London", "Egyesült Királyság" },
+    { "Reykjavík", "Izland" },
+    { "Tallinn", "Észtország" },
+    { "Riga", "Lettország" }
+};
+
+
+
         int moves = 0;
 
         List<string> ujlista;
@@ -61,6 +99,8 @@ namespace memoriajatek
         Button elozogomb;
         string elozoertek;
         bool elso = true;
+
+        bool helyes = false;
 
         public MainWindow()
         {
@@ -110,14 +150,14 @@ namespace memoriajatek
                         ujlista = ujlista.Shuffle().ToList();
                         break;
                     case "Ország-Főváros":
-                        Dictionary<String,String> dict = new Dictionary<String,String>();
+                        Dictionary<String, String> dict = new Dictionary<String, String>();
                         Dictionary<String, String> shuffledorszagok = orszagok.Shuffle().ToDictionary();
 
                         for (int i = 0; i < (meret * meret / 2); i++)
                         {
                             dict.Add(shuffledorszagok.Keys.ElementAt(i), shuffledorszagok.Values.ElementAt(i));
                         }
-                       
+
                         ujlista = dict.Keys.ToList();
                         ujlista = ujlista.Concat(dict.Values).ToList();
                         ujlista = ujlista.Shuffle().ToList();
@@ -126,9 +166,9 @@ namespace memoriajatek
                 int g = 0;
                 ertekek = new string[meret, meret];
                 int fontmeret = meret;
-                if(tema == "Ország-főváros")
+                if (tema == "Ország-főváros")
                 {
-                    fontmeret /= 2;
+                    fontmeret *= 10;
                 }
                 for (int i = 0; i < meret; i++)
                 {
@@ -196,6 +236,25 @@ namespace memoriajatek
                         moves++;
                         if (mostbtn.Content == elozoertek)
                         {
+                            helyes = true;
+                        }
+                        else if (orszagok.Keys.Contains(mostbtn.Content.ToString()))
+                        {
+                            if (orszagok[mostbtn.Content.ToString()] == elozoertek)
+                            {
+                                helyes = true;
+                            }
+                        }
+                        else if (forditottorszagok.Keys.Contains(mostbtn.Content.ToString()))
+                        {
+                            if (forditottorszagok[mostbtn.Content.ToString()] == elozoertek)
+                            {
+                                helyes = true;
+                            }
+                        }
+
+                        if (helyes)
+                        {
 
 
                             elozogomb.Background = System.Windows.Media.Brushes.LightGreen;
@@ -206,6 +265,7 @@ namespace memoriajatek
                             {
                                 MessageBox.Show($"NYERTÉL! Párosítások száma: {moves}", "GYŐZTES", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                             }
+                            helyes = false;
                         }
                         else
                         {
