@@ -12,7 +12,7 @@ namespace memoriajatek
         List<string> temak = new List<string>() { "Számok", "Emoji-k", "Ország-Főváros" };
 
         List<string> szamok = new List<string>() { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", };
-        List<string> emoijik = new List<string>() { "😀", "😂", "😍", "🥳", "😎", "🤔", "😢", "😡", "🤩", "😴", "🤗", "🙃", "👍", "👎", "👏", "🙌", "❤️", "💔", "🔥", "⭐", "🎉", "🚀", "🌈", "☀️", "🌙", "🍕", "🍔", "🍺", "🐶", "🐱", "🦄", "👻" };
+        List<string> emojik = new List<string>() { "😀", "😂", "😍", "🥳", "😎", "🤔", "😢", "😡", "🤩", "😴", "🤗", "🙃", "👍", "👎", "👏", "🙌", "❤️", "💔", "🔥", "⭐", "🎉", "🚀", "🌈", "☀️", "🌙", "🍕", "🍔", "🍺", "🐶", "🐱", "🦄", "👻" };
 
         Dictionary<string, string> orszagok = new Dictionary<string, string>
 {
@@ -35,7 +35,7 @@ namespace memoriajatek
     { "Horvátország", "Zágráb" },
     { "Szerbia", "Belgrád" },
     { "Szlovénia", "Ljubljana" },
-    { "Bosznia-Hercegovina", "Szarajevó" },
+    { "Oroszország", "Moszkva" },
     { "Montenegró", "Podgorica" },
     { "Albánia", "Tirana" },
     { "Észak-Macedónia", "Szkopje" },
@@ -70,7 +70,7 @@ namespace memoriajatek
     { "Zágráb", "Horvátország" },
     { "Belgrád", "Szerbia" },
     { "Ljubljana", "Szlovénia" },
-    { "Szarajevó", "Bosznia-Hercegovina" },
+    { "Moszkva", "Oroszország" },
     { "Podgorica", "Montenegró" },
     { "Tirana", "Albánia" },
     { "Szkopje", "Észak-Macedónia" },
@@ -143,7 +143,7 @@ namespace memoriajatek
 
                         break;
                     case "Emoji-k":
-                        ujlista = emoijik.Shuffle().ToList();
+                        ujlista = emojik.Shuffle().ToList();
                         ujlista.RemoveRange((meret * meret / 2) - 1, ujlista.Count - (meret * meret / 2));
 
                         ujlista = ujlista.Concat(ujlista).ToList();
@@ -165,10 +165,14 @@ namespace memoriajatek
                 }
                 int g = 0;
                 ertekek = new string[meret, meret];
-                int fontmeret = (24 / meret) * 2;
+                int fontmeret = ((24 / meret) * 5 / 2);
                 if (tema != "Ország-Főváros")
                 {
-                    fontmeret *= 3;
+                    fontmeret *= 2;
+                }
+                else
+                {
+                    fontmeret--;
                 }
                 for (int i = 0; i < meret; i++)
                 {
@@ -263,7 +267,7 @@ namespace memoriajatek
                             kitalaltak.Add(elozogomb);
                             if (kitalaltak.Count == grd_jatek.RowDefinitions.Count * grd_jatek.RowDefinitions.Count)
                             {
-                                MessageBox.Show($"NYERTÉL! Próbálkozás száma: {moves}", "GYŐZTES", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                                MessageBox.Show($"NYERTÉL! Próbálkozás száma: {moves}", "GYŐZTES", MessageBoxButton.OK, MessageBoxImage.Information);
                             }
                             helyes = false;
                         }
