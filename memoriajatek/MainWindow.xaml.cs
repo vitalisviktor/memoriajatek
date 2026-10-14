@@ -121,7 +121,7 @@ namespace memoriajatek
                 kitalaltak.Clear();
                 grd_jatek.RowDefinitions.Clear();
                 grd_jatek.ColumnDefinitions.Clear();
-                int meret = Convert.ToInt32(lbx_meretek.SelectedItem.ToString().First().ToString());
+                int meret = 4 + lbx_meretek.SelectedIndex * 2;
                 string tema = lbx_temak.SelectedItem.ToString();
 
                 for (int i = 0; i < meret; i++)
@@ -200,7 +200,7 @@ namespace memoriajatek
             }
             else
             {
-                MessageBox.Show("Kérlek válassz ki méretet és témát!");
+                MessageBox.Show("Kérlek válassz ki méretet és témát!","Hiba",MessageBoxButton.OK,MessageBoxImage.Warning);
             }
         }
 
